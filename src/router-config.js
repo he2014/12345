@@ -1,4 +1,6 @@
 
+import orderManage from './page/orderManage/index.vue'
+
 import activePublic from './page/activePublic/index.vue'
 import step1 from './page/activePublic/step1.vue'
 import step2 from './page/activePublic/step2.vue'
@@ -16,7 +18,11 @@ import page4 from './page/activeManage/page4.vue'
 import page5 from './page/activeManage/page5.vue'
 
 
+
 export default [
+  {
+    path:'/orderManage',component:orderManage
+  },
   {
     path: '/activeManage',component:totalpages,
     children:[

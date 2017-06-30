@@ -4,6 +4,8 @@
     <header class="header" :class="{ 'header-fixed' : headerFixed }">
     <el-row>
         <el-col :span="24">
+          <div class="grid-content bg-purple" style="float:left;width:200px;height:60px;text-align:center;line-height:60px;background-color:#324057;color:#fff;">我的快递</div>
+          <div class="header-right" style="float:right;width:200px;height:60px;text-align:center;line-height:60px;background-color:#eee;color:#fff;">123456789</div>
           <!--<el-menu default-active="5" class="el-menu-demo" mode="horizontal" @select="">
             <el-menu-item index="1">高级插件</el-menu-item>
             <el-menu-item index="2">在线商城</el-menu-item>
@@ -19,32 +21,45 @@
     <main>
           <!-- 左侧导航 -->
         <div class="main-left" style="background-color:#324057;">
-           <!--<el-menu default-active="/activePublic" class="el-menu-vertical-demo" :router="true">
-              <el-menu-item index="/activePublic" :class="{'isActive': active}">活动发布</el-menu-item>
-              <el-menu-item index="/activeManage" :class="{'isActive': !active}">活动管理</el-menu-item>
-            </el-menu>-->
-          <el-menu default-active="/activePublic" class="el-menu-vertical-demo" :router="true" theme="dark">
+          <el-menu default-active="/orderManage" @open="handleOpen" @close="handleClose" class="el-menu-vertical-demo" :router="true" theme="dark" :unique-opened="uniqueOpened">
+            <el-menu-item index="/orderManage">定单管理</el-menu-item>
             <el-submenu index="1">
-              <template slot="title">运营管理</template>
-              <el-menu-item-group title="运营管理">
-                <el-menu-item index="/activePublic" :class="{'isActive': active}">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
-             </el-menu-item-group>
+              <template slot="title">运营位管理</template>
+              <el-menu-item index="/activePublic" :class="{'isActive': !active}">寄快递首页</el-menu-item>
+              <el-menu-item index="1-2">选择快递页</el-menu-item>
             </el-submenu>
+            <el-menu-item index="寄快递入口管理">寄快递入口管理</el-menu-item>
+            <el-menu-item index="快递公司管理">快递公司管理</el-menu-item>
+            <el-menu-item index="选快递下单管理">选快递下单管理</el-menu-item>
+            <el-menu-item index="服务类型及折扣管理">服务类型及折扣管理</el-menu-item>
+            <el-menu-item index="非服务地区管理">非服务地区管理</el-menu-item>
             <el-submenu index="2">
               <template slot="title">价格管理</template>
-              <el-menu-item-group title="价格管理">
-                  <el-menu-item index="/activeManage" :class="{'isActive': !active}">选项1</el-menu-item>
-                  <el-menu-item index="2-2">选项2</el-menu-item>
-                </el-menu-item-group>
+              <el-menu-item index="/activeManage" :class="{'isActive': !active}">运线快递费管理</el-menu-item>
+            </el-submenu> 
+            <el-menu-item index="同城直送管理">同城直送管理</el-menu-item>
+            <el-menu-item index="附近快递资源管理">附近快递资源管理</el-menu-item>
+            <el-menu-item index="公告管理">公告管理</el-menu-item>
+            <el-submenu index="5">
+              <template slot="title">用户管理</template>
+              <el-menu-item index="5-1">订单取频次管理</el-menu-item>
+              <el-menu-item index="5-2">黑名单管理</el-menu-item>
             </el-submenu>  
-            <el-menu-item index="3">定单管理</el-menu-item>
-            <el-menu-item index="4">快递公司入口</el-menu-item>
+            <el-menu-item index="退出登录">退出登录</el-menu-item>            
           </el-menu>
         </div>
 
           <!-- 右侧主内容区 -->
           <div  class="main-right" >
+            <el-breadcrumb separator="/">
+            <div class="main-title"> 
+              <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+              <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+              <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+              <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+            </div>
+              
+            </el-breadcrumb>
             <transition name="fade">
               <router-view class="view"></router-view>
             </transition>
@@ -67,25 +82,34 @@ export default {
   data: function (){
     return {
       active:true,
-      headerFixed : true
+      headerFixed : true,
+      uniqueOpened : true
     }
   },
   created: function(){
-    this.$router.push('/activePublic');
+    this.$router.push('/orderManage');
   },
   methods: {
-
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    }
   },
   watch: {
      '$route': function (to,from) {
-         if(to.path == '/activePublic'){
+         if(to.path == '/orderManage'){
              this.active = true ;
          }else if(to.path == '/activeManage'){
+             this.active = false ;
+         }else if(to.path == '/activePublic'){
              this.active = false ;
          }
      }
   }
 }
+
 </script>
 
 <style>
@@ -104,7 +128,7 @@ header .el-menu-demo{padding-left: 300px!important;}
 /* 主内容区 */
 main{display: -webkit-box;display: -ms-flexbox;display: flex;  min-height: 800px; background-color: #FCFCFC;  }
 main .main-left{-webkit-box-flex: 0;-ms-flex: 0 0 200px;flex: 0 0 200px;}
-main .main-right{-webkit-box-flex:1;-ms-flex:1;flex:1; background-color: #fff; padding: 50px 70px; }
+main .main-right{-webkit-box-flex:1;-ms-flex:1;flex:1; background-color: #f1f1f1; padding: 30px 70px; }
 /*main .el-menu{background-color: transparent!important;}*/
 /*  */
 .router-link{display:inline-block;width:100%;height:100%;text-align:center;color:#475669;text-decoration: none; }
@@ -136,4 +160,11 @@ main .main-right{-webkit-box-flex:1;-ms-flex:1;flex:1; background-color: #fff; p
 
   /* 卡片 */
   .el-card{overflow: visible!important;}
+
+
+.main-title{
+  padding-bottom:30px;
+}
+
+
 </style>
