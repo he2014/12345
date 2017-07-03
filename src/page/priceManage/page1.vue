@@ -27,7 +27,7 @@
     },
     methods: {
       routerTo: function (val) {
-        this.$router.push('/activeManage/detail/page1/step'+val);
+        this.$router.push('/priceManage/detail/page1/step'+val);
       },
       handleCancel: function () {
 

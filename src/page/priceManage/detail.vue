@@ -38,7 +38,7 @@
         },
         methods: {
           routerTo: function (tab,event) {
-            this.$router.push('/activeManage/detail/page'+(tab.index+1));
+            this.$router.push('/priceManage/detail/page'+(tab.index+1));
           },
         },
         watch: function () {

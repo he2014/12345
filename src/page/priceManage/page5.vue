@@ -111,7 +111,7 @@
     methods: {
       handleSelect: function (row, column, cell, event) {
         if (column.label == '操作') {
-          this.$router.push('/activeManage/detail/page1');
+          this.$router.push('/priceManage/detail/page1');
         } else if (column.type == 'selection') {
           row.$info = !row.$selected;
         } else {

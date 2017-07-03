@@ -1,5 +1,5 @@
 <template>
-    <div class="activePublic ">
+    <div class="sendExpress">
       <el-steps :space="200" :active="step" class="step">
         <el-step title="活动信息" description=""></el-step>
         <el-step title="报名签到" description=""></el-step>
@@ -25,7 +25,7 @@
     import $ from 'jquery'
 
     export default {
-    name:'activePublic',
+    name:'sendExpress',
     data: function () {
       return {
         isRouter: false,
@@ -47,7 +47,7 @@
           $('html,body').animate({scrollTop:0},500);
       },
       handleNextStep: function () {
-          this.$router.push('/activePublic/step'+(this.step+1));
+          this.$router.push('/sendExpress/step'+(this.step+1));
           var _this = this;
           setTimeout(function () {
               if(_this.isRouter){
@@ -87,6 +87,6 @@
 
 </script>
 <style>
- .activePublic .router-link{color:#fff;}
- .activePublic .but-group .el-button{margin-right: 20px;}
+ .sendExpress .router-link{color:#fff;}
+ .sendExpress .but-group .el-button{margin-right: 20px;}
 </style>

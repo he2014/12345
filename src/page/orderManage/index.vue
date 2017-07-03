@@ -1,8 +1,32 @@
 <template>
   <div class="orderManage">
-    <el-input-number size="large" v-model="num4"></el-input-number>
-    <el-input-number v-model="num5"></el-input-number>
-    <el-input-number size="small" v-model="num6"></el-input-number>
+    <el-row>
+      <el-col :span="2" class="import-font">关键字：</el-col>      
+      <el-col :span="10">
+          <el-input :span="10" v-model="input" size="large" placeholder="请输入支付宝绑定的手机号/订单号/运单号"></el-input>
+      </el-col>
+      <el-col :span="4" class="import-search">
+        <el-button type="primary" size="large">搜 索</el-button>
+      </el-col>   
+    </el-row>
+    <el-row>
+      <el-col :span="2" class="import-font">关键字：</el-col>      
+      <el-col :span="10">
+          <el-input :span="10" v-model="input" size="large" placeholder="请输入支付宝绑定的手机号/订单号/运单号"></el-input>
+      </el-col>
+      <el-col :span="4" class="import-search">
+        <el-button type="primary" size="large">搜 索</el-button>
+      </el-col>   
+    </el-row>
+    <el-row>
+      <el-col :span="2" class="import-font">关键字：</el-col>      
+      <el-col :span="10">
+          <el-input :span="10" v-model="input" size="large" placeholder="请输入支付宝绑定的手机号/订单号/运单号"></el-input>
+      </el-col>
+      <el-col :span="4" class="import-search">
+        <el-button type="primary" size="large">搜 索</el-button>
+      </el-col>   
+    </el-row>
   </div>
 
 </template>
@@ -11,10 +35,23 @@
     name:'ordermanage',
     data() {
       return {
-        num4: 1,
-        num5: 1,
-        num6: 1
+        input: ''
       }
     }
   };
 </script>
+
+<style>
+.import-font{
+  height:42px;
+  line-height: 42px;
+}
+.order-input{
+  width: 500px;
+}
+.import-search{
+  margin-left: 20px;
+}
+
+</style>
+

@@ -1,5 +1,5 @@
 <template>
-  <div class="allActive">
+  <div class="priceManage">
     <el-row class="head">
       <el-col :span="18" style="padding:20px 0;background: #33CCCC;">
         <el-col :span="8">
@@ -16,7 +16,7 @@
         </el-col>
       </el-col>
 
-      <el-col :span="5" :offset="1" style="background:  #3091F2;padding:40px 0;">
+      <el-col :span="5" :offset="1" style="background:#3091F2;padding:40px 0;">
         {{ totalActiveNum }}<br>
         <span>查看会员</span>
       </el-col>
@@ -75,7 +75,7 @@
 </template>
 <script>
   export default {
-    name: 'allActive',
+    name: 'priceManage',
     data: function () {
       return {
         totalActiveNum: 3,
@@ -136,7 +136,7 @@
     methods: {
       handleSelect: function (row, column, cell, event) {
        if (column.label == '操作') {
-         this.$router.push('/activeManage/detail/page1');
+         this.$router.push('/priceManage/detail/page1');
         } else if(column.type == 'selection'){
             row.$info = !row.$selected;
        }else{
